@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c668avcy1qx4v"]
+
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_mbi0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2742q"]
+shading_mode = 2
+albedo_color = Color(0.992188, 1, 0, 1)
+albedo_texture = ExtResource("1_mbi0l")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_usd71"]
+material = SubResource("StandardMaterial3D_2742q")
+left_to_right = 1.0
+size = Vector3(3, 1, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w3mc1"]
+points = PackedVector3Array(-1.5, -0.5, 1, -1.5, -0.5, -1, 1.5, 0.5, 1, 1.5, 0.5, -1, 1.5, -0.5, 1, 1.5, -0.5, -1)
+
+[node name="Yellow Dev Ramp" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="StaticBody3D" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PrismMesh_usd71")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_w3mc1")

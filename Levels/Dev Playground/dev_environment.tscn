@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://deuap4wj2lt8c"]
+
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_22vgc"]
+[ext_resource type="PackedScene" uid="uid://v25m8xjsukcb" path="res://Levels/Dev Playground/Dev Objects/red_dev_box.tscn" id="2_eswq4"]
+[ext_resource type="PackedScene" uid="uid://2lv4tb876p6b" path="res://Levels/Dev Playground/Dev Objects/blue_dev_box.tscn" id="3_eswq4"]
+[ext_resource type="PackedScene" uid="uid://c668avcy1qx4v" path="res://Levels/Dev Playground/Dev Objects/yellow_dev_ramp.tscn" id="4_lt7gd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
+sky_top_color = Color(0.493, 0.52925, 0.58, 1)
+sky_horizon_color = Color(0.368729, 0.506433, 0.699219, 1)
+ground_bottom_color = Color(0.2385, 0.326625, 0.45, 1)
+ground_horizon_color = Color(0.368729, 0.506433, 0.699219, 1)
+ground_curve = 0.0579267
+sun_angle_max = 3.0
+sun_curve = 2.0
+use_debanding = false
+
+[sub_resource type="Sky" id="Sky_2rduw"]
+sky_material = SubResource("ProceduralSkyMaterial_j5ncr")
+
+[sub_resource type="Environment" id="Environment_jovbx"]
+background_mode = 2
+sky = SubResource("Sky_2rduw")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jovbx"]
+shading_mode = 2
+albedo_texture = ExtResource("1_22vgc")
+metallic_specular = 0.0
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6tbo"]
+material = SubResource("StandardMaterial3D_jovbx")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
+size = Vector3(10, 1, 10)
+
+[node name="Dev Environment" type="Node"]
+
+[node name="Skybox" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Skybox"]
+environment = SubResource("Environment_jovbx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Skybox"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(1, 1, 0.85, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 500.0
+
+[node name="Mesh" type="Node" parent="."]
+
+[node name="Floor" type="Node3D" parent="Mesh"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Floor"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Floor/StaticBody3D"]
+mesh = SubResource("BoxMesh_x6tbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_v77un")
+
+[node name="Boxes" type="Node" parent="Mesh"]
+
+[node name="Red Dev Box 1" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -1, 1, -1)
+
+[node name="Red Dev Box 2" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
+[node name="Red Dev Box 3" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 1, 1, -1)
+
+[node name="Blue Dev Box 1" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3, 1.5, -3)
+
+[node name="Blue Dev Box 2" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 1.5, -3)
+
+[node name="Ramps" type="Node" parent="Mesh"]
+
+[node name="Yellow Dev Ramp 1" parent="Mesh/Ramps" instance=ExtResource("4_lt7gd")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -3, 1, 1)
+
+[node name="Yellow Dev Ramp" parent="Mesh/Ramps" instance=ExtResource("4_lt7gd")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 3, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4, 8)
