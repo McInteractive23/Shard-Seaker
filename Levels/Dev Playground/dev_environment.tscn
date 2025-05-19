@@ -68,11 +68,7 @@ shape = SubResource("BoxShape3D_v77un")
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -1, 1, -1)
 
 [node name="Red Dev Box 2" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
-<<<<<<< HEAD
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1, -2.7)
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.5)
->>>>>>> a96706c5043ec71cb7f07e4d5fa9e985801152c1
 
 [node name="Red Dev Box 3" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 1, 1, -1)
