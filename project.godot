@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shard Seaker"
-run/main_scene="uid://deuap4wj2lt8c"
+run/main_scene="uid://c2ecbnmtmkg4w"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
