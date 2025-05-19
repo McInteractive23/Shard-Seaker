@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpb1voggsoa5i"]
+
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_t6hji"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1h0s"]
+albedo_color = Color(0.148438, 1, 0, 1)
+albedo_texture = ExtResource("1_t6hji")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ic4sm"]
+material = SubResource("StandardMaterial3D_c1h0s")
+size = Vector3(6, 3, 1)
+
+[node name="Green Dev Wall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_ic4sm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

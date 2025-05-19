@@ -17,7 +17,7 @@ material = SubResource("StandardMaterial3D_jovbx")
 
 [node name="Red Dev Box" type="Node3D"]
 
-[node name="StaticBody3D" type="RigidBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_x6tbo")

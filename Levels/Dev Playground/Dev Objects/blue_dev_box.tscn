@@ -19,7 +19,7 @@ size = Vector3(2, 2, 2)
 
 [node name="Blue Dev Box" type="Node3D"]
 
-[node name="StaticBody3D" type="RigidBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_uj06s")

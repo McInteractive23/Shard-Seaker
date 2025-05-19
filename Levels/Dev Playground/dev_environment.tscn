@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2ecbnmtmkg4w"]
+[gd_scene load_steps=12 format=3 uid="uid://c2ecbnmtmkg4w"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_22vgc"]
+[ext_resource type="PackedScene" uid="uid://cpb1voggsoa5i" path="res://Levels/Dev Playground/Dev Objects/green_dev_wall.tscn" id="2_crbf7"]
 [ext_resource type="PackedScene" uid="uid://v25m8xjsukcb" path="res://Levels/Dev Playground/Dev Objects/red_dev_box.tscn" id="2_eswq4"]
 [ext_resource type="PackedScene" uid="uid://2lv4tb876p6b" path="res://Levels/Dev Playground/Dev Objects/blue_dev_box.tscn" id="3_eswq4"]
 [ext_resource type="PackedScene" uid="uid://c668avcy1qx4v" path="res://Levels/Dev Playground/Dev Objects/yellow_dev_ramp.tscn" id="4_lt7gd"]
@@ -26,13 +27,13 @@ tonemap_mode = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jovbx"]
 shading_mode = 2
 albedo_texture = ExtResource("1_22vgc")
-metallic_specular = 0.0
 uv1_triplanar = true
 texture_filter = 5
+billboard_keep_scale = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_x6tbo"]
 material = SubResource("StandardMaterial3D_jovbx")
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
 size = Vector3(10, 1, 10)
@@ -52,15 +53,80 @@ directional_shadow_max_distance = 500.0
 
 [node name="Mesh" type="Node" parent="."]
 
-[node name="Floor" type="Node3D" parent="Mesh"]
+[node name="MainFloor" type="Node3D" parent="Mesh"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/MainFloor"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Floor/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MainFloor/StaticBody3D"]
 mesh = SubResource("BoxMesh_x6tbo")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MainFloor/StaticBody3D"]
 shape = SubResource("BoxShape3D_v77un")
+
+[node name="Walls" type="Node" parent="Mesh"]
+
+[node name="Green Dev Wall 1" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-4.27193e-08, 0, -1, 0, 1, 0, 1, 0, -4.27193e-08, 6.5, 2, -7)
+
+[node name="Green Dev Wall 2" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-4.27193e-08, 0, -1, 0, 1, 0, 1, 0, -4.27193e-08, 6.5, 2, -1)
+
+[node name="Green Dev Wall 3" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(0, -1, -4.37114e-08, -4.47035e-08, -4.37114e-08, 1, -1, 0, -4.47035e-08, 8.5, 3, -7)
+
+[node name="Green Dev Wall 4" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.74846e-07, -1, -4.37114e-08, -4.47035e-08, -4.37114e-08, 1, -1, -1.74846e-07, -4.47035e-08, 8.5, 3, -1)
+
+[node name="Green Dev Wall 5" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.50996e-07, -1, 2.42906e-17, 1, 1.50996e-07, 9.92095e-10, -9.92095e-10, 0, 1, 8.5, -0.5, 1.5)
+
+[node name="Green Dev Wall 6" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(2.38419e-07, -1, -8.74228e-08, -1, -2.38419e-07, -9.92095e-10, 9.92074e-10, 8.74228e-08, -1, 8.5, 0, -9.5)
+
+[node name="Green Dev Wall 7" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1, 0, 9.92095e-10, 0, 1, 0, -9.92095e-10, 0, 1, -7, 2, -6.5)
+
+[node name="Green Dev Wall 8" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1, 0, 9.92095e-10, 0, 1, 0, -9.92095e-10, 0, 1, -1, 2, -6.5)
+
+[node name="Green Dev Wall 9" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-1, 4.37114e-08, -4.47035e-08, -4.47035e-08, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -7, 3, -8.5)
+
+[node name="Green Dev Wall 10" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-1, -1.31134e-07, -4.47035e-08, -4.47035e-08, -4.37114e-08, 1, -1.31134e-07, 1, 4.37114e-08, -1, 3, -8.5)
+
+[node name="Green Dev Wall 11" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-9.92102e-10, 4.37114e-08, 1, 1, 1.50996e-07, 9.92095e-10, -1.50996e-07, 1, -4.37114e-08, 1.5, -0.5, -8.5)
+
+[node name="Green Dev Wall 13" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1, 0, 9.92095e-10, 0, 1, 0, -9.92095e-10, 0, 1, -7, 5, -6.5)
+
+[node name="Green Dev Wall 14" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-1, 4.37114e-08, -4.47035e-08, -4.47035e-08, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -7, 6, -8.5)
+
+[node name="Green Dev Wall 15" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(9.92064e-10, 1.31134e-07, -1, -1, -2.38419e-07, -9.92095e-10, -2.38419e-07, 1, 1.31134e-07, -9.5, 3, -8.5)
+
+[node name="Green Dev Wall 12" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-9.92102e-10, 4.37114e-08, 1, 1, 1.50996e-07, 9.92095e-10, -1.50996e-07, 1, -4.37114e-08, -4.5, 2.5, -8.5)
+
+[node name="Green Dev Wall 16" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.30142e-07, 0, 1, 0, 1, 0, -1, 0, 1.30142e-07, -7.5, 2, 3.5)
+
+[node name="Green Dev Wall 17" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(2.17565e-07, 8.74228e-08, 1, 8.74228e-08, 1, -8.74228e-08, -1, 8.74228e-08, 2.17565e-07, -7.5, 2, -0.5)
+
+[node name="Green Dev Wall 18" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-8.74228e-08, 1, 4.37114e-08, -4.47035e-08, -4.37114e-08, 1, 1, 8.74228e-08, 4.47035e-08, -8.5, 4, 4.5)
+
+[node name="Green Dev Wall 19" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-2.62268e-07, 1, 4.37114e-08, -4.47035e-08, -4.37114e-08, 1, 1, 2.62268e-07, 4.47035e-08, -8.5, 4, -1.5)
+
+[node name="Green Dev Wall 20" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.50996e-07, -1, 0, 1, 1.50996e-07, 9.92095e-10, -9.92095e-10, 0, 1, -8.5, 0.5, -4)
+
+[node name="Green Dev Wall 21" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-2.38419e-07, 1, 0, -1, -2.38419e-07, -9.92095e-10, -9.92095e-10, 0, 1, -8.5, 1, 7)
 
 [node name="Boxes" type="Node" parent="Mesh"]
 
