@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2ecbnmtmkg4w"]
+[gd_scene load_steps=12 format=3 uid="uid://c2ecbnmtmkg4w"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_22vgc"]
+[ext_resource type="PackedScene" uid="uid://cpb1voggsoa5i" path="res://Levels/Dev Playground/Dev Objects/green_dev_wall.tscn" id="2_crbf7"]
 [ext_resource type="PackedScene" uid="uid://v25m8xjsukcb" path="res://Levels/Dev Playground/Dev Objects/red_dev_box.tscn" id="2_eswq4"]
 [ext_resource type="PackedScene" uid="uid://2lv4tb876p6b" path="res://Levels/Dev Playground/Dev Objects/blue_dev_box.tscn" id="3_eswq4"]
 [ext_resource type="PackedScene" uid="uid://c668avcy1qx4v" path="res://Levels/Dev Playground/Dev Objects/yellow_dev_ramp.tscn" id="4_lt7gd"]
-[ext_resource type="PackedScene" uid="uid://cs6lc6yj4gxbo" path="res://Levels/Dev Playground/Dev Objects/purple_dev_pole_small.tscn" id="5_dult1"]
-[ext_resource type="PackedScene" uid="uid://d1il1pemhyf74" path="res://Levels/Dev Playground/Dev Objects/purple_dev_pole_big.tscn" id="6_s2h2c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
 sky_top_color = Color(0.493, 0.52925, 0.58, 1)
@@ -34,21 +33,10 @@ billboard_keep_scale = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_x6tbo"]
 material = SubResource("StandardMaterial3D_jovbx")
-size = Vector3(25, 1, 25)
+size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
-size = Vector3(25, 1, 25)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt7gd"]
-albedo_color = Color(0.333333, 1, 0, 1)
-albedo_texture = ExtResource("1_22vgc")
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_crbf7"]
-material = SubResource("StandardMaterial3D_lt7gd")
-size = Vector3(6, 3, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dult1"]
+size = Vector3(10, 1, 10)
 
 [node name="Dev Environment" type="Node"]
 
@@ -77,118 +65,93 @@ shape = SubResource("BoxShape3D_v77un")
 
 [node name="Walls" type="Node" parent="Mesh"]
 
-[node name="Green Dev Wall 1" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.5, 2, -5)
+[node name="Green Dev Wall 1" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-4.27193e-08, 0, -1, 0, 1, 0, 1, 0, -4.27193e-08, 6.5, 2, -7)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 1"]
+[node name="Green Dev Wall 2" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-4.27193e-08, 0, -1, 0, 1, 0, 1, 0, -4.27193e-08, 6.5, 2, -1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 1/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
+[node name="Green Dev Wall 3" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(0, -1, -4.37114e-08, -4.47035e-08, -4.37114e-08, 1, -1, 0, -4.47035e-08, 8.5, 3, -7)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 1/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
+[node name="Green Dev Wall 4" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.74846e-07, -1, -4.37114e-08, -4.47035e-08, -4.37114e-08, 1, -1, -1.74846e-07, -4.47035e-08, 8.5, 3, -1)
 
-[node name="Green Dev Wall 2" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, 8, 2, -9.5)
+[node name="Green Dev Wall 5" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.50996e-07, -1, 2.42906e-17, 1, 1.50996e-07, 9.92095e-10, -9.92095e-10, 0, 1, 8.5, -0.5, 1.5)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 2"]
+[node name="Green Dev Wall 6" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(2.38419e-07, -1, -8.74228e-08, -1, -2.38419e-07, -9.92095e-10, 9.92074e-10, 8.74228e-08, -1, 8.5, 0, -9.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 2/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
+[node name="Green Dev Wall 7" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1, 0, 9.92095e-10, 0, 1, 0, -9.92095e-10, 0, 1, -7, 2, -6.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 2/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
+[node name="Green Dev Wall 8" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1, 0, 9.92095e-10, 0, 1, 0, -9.92095e-10, 0, 1, -1, 2, -6.5)
 
-[node name="Green Dev Wall 3" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, -1.5, 2, -9.5)
+[node name="Green Dev Wall 9" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-1, 4.37114e-08, -4.47035e-08, -4.47035e-08, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -7, 3, -8.5)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 3"]
+[node name="Green Dev Wall 10" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-1, -1.31134e-07, -4.47035e-08, -4.47035e-08, -4.37114e-08, 1, -1.31134e-07, 1, 4.37114e-08, -1, 3, -8.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 3/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
+[node name="Green Dev Wall 11" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-9.92102e-10, 4.37114e-08, 1, 1, 1.50996e-07, 9.92095e-10, -1.50996e-07, 1, -4.37114e-08, 1.5, -0.5, -8.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 3/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
+[node name="Green Dev Wall 13" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1, 0, 9.92095e-10, 0, 1, 0, -9.92095e-10, 0, 1, -7, 5, -6.5)
 
-[node name="Green Dev Wall 4" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(4.37114e-08, -1, 4.37114e-08, -8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, -9.5, 5, -8)
+[node name="Green Dev Wall 14" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-1, 4.37114e-08, -4.47035e-08, -4.47035e-08, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -7, 6, -8.5)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 4"]
+[node name="Green Dev Wall 15" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(9.92064e-10, 1.31134e-07, -1, -1, -2.38419e-07, -9.92095e-10, -2.38419e-07, 1, 1.31134e-07, -9.5, 3, -8.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 4/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
+[node name="Green Dev Wall 12" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-9.92102e-10, 4.37114e-08, 1, 1, 1.50996e-07, 9.92095e-10, -1.50996e-07, 1, -4.37114e-08, -4.5, 2.5, -8.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 4/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
+[node name="Green Dev Wall 16" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.30142e-07, 0, 1, 0, 1, 0, -1, 0, 1.30142e-07, -7.5, 2, 3.5)
 
-[node name="Green Dev Wall 5" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(4.37114e-08, -1, 4.37114e-08, -8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, -9.5, 2, -8)
+[node name="Green Dev Wall 17" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(2.17565e-07, 8.74228e-08, 1, 8.74228e-08, 1, -8.74228e-08, -1, 8.74228e-08, 2.17565e-07, -7.5, 2, -0.5)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 5"]
+[node name="Green Dev Wall 18" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-8.74228e-08, 1, 4.37114e-08, -4.47035e-08, -4.37114e-08, 1, 1, 8.74228e-08, 4.47035e-08, -8.5, 4, 4.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 5/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
+[node name="Green Dev Wall 19" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-2.62268e-07, 1, 4.37114e-08, -4.47035e-08, -4.37114e-08, 1, 1, 2.62268e-07, 4.47035e-08, -8.5, 4, -1.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 5/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
+[node name="Green Dev Wall 20" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(1.50996e-07, -1, 0, 1, 1.50996e-07, 9.92095e-10, -9.92095e-10, 0, 1, -8.5, 0.5, -4)
 
-[node name="Green Dev Wall 6" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(4.37114e-08, -1, 4.37114e-08, -8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, -8.74228e-08, -9.5, 2, -2)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 6"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 6/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 6/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
-
-[node name="Green Dev Wall 7" type="Node3D" parent="Mesh/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, -1.5, 5, -9.5)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Walls/Green Dev Wall 7"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/Walls/Green Dev Wall 7/StaticBody3D"]
-mesh = SubResource("BoxMesh_crbf7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Walls/Green Dev Wall 7/StaticBody3D"]
-shape = SubResource("BoxShape3D_dult1")
+[node name="Green Dev Wall 21" parent="Mesh/Walls" instance=ExtResource("2_crbf7")]
+transform = Transform3D(-2.38419e-07, 1, 0, -1, -2.38419e-07, -9.92095e-10, -9.92095e-10, 0, 1, -8.5, 1, 7)
 
 [node name="Boxes" type="Node" parent="Mesh"]
 
 [node name="Red Dev Box 1" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
-transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -6, 1, -2)
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -1, 1, -1)
 
 [node name="Red Dev Box 2" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 7, -9.5)
+transform = Transform3D(0.707107, 0, 0.707107, 0.579228, 0.573576, -0.579228, -0.40558, 0.819152, 0.40558, 0.00259459, 1.4, -2.50723)
 
 [node name="Red Dev Box 3" parent="Mesh/Boxes" instance=ExtResource("2_eswq4")]
-transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 6, 1, -4)
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 1, 1, -1)
 
 [node name="Blue Dev Box 1" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.5, 1.5, -6)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3, 1.5, -3)
 
 [node name="Blue Dev Box 2" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 1.5, -6)
-
-[node name="Blue Dev Box 3" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
-transform = Transform3D(1, 0, 2.23517e-07, 0, 1, 0, -2.23517e-07, 0, 1, -9.5, 1.5, 4)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 1.5, -3)
 
 [node name="Ramps" type="Node" parent="Mesh"]
 
 [node name="Yellow Dev Ramp 1" parent="Mesh/Ramps" instance=ExtResource("4_lt7gd")]
-transform = Transform3D(1.18217e-07, 0, 1, 0, 1, 0, -1, 0, 1.18217e-07, -9.5, 5, -2)
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -3, 1, 1)
 
 [node name="Yellow Dev Ramp" parent="Mesh/Ramps" instance=ExtResource("4_lt7gd")]
-transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 9.5, 2, 1)
-
-[node name="Climbing Poles" type="Node" parent="Mesh"]
-
-[node name="Purple Dev Pole Small" parent="Mesh/Climbing Poles" instance=ExtResource("5_dult1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 3.5, 9)
-
-[node name="Purple Dev Pole Big" parent="Mesh/Climbing Poles" instance=ExtResource("6_s2h2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 5.5, 9)
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 3, 1, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4, 8)
