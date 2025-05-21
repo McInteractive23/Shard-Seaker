@@ -36,7 +36,7 @@ material = SubResource("StandardMaterial3D_jovbx")
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
 
 [node name="Dev Environment" type="Node"]
 
