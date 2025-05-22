@@ -37,15 +37,6 @@ material = SubResource("StandardMaterial3D_jovbx")
 size = Vector3(25, 1, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-size = Vector3(20, 1, 20)
-=======
-=======
->>>>>>> parent of 1b7f66d (Revert "Dev Environment")
-=======
->>>>>>> parent of 1b7f66d (Revert "Dev Environment")
 size = Vector3(25, 1, 25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt7gd"]
@@ -58,13 +49,6 @@ material = SubResource("StandardMaterial3D_lt7gd")
 size = Vector3(6, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dult1"]
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 1b7f66d (Revert "Dev Environment")
-=======
->>>>>>> parent of 1b7f66d (Revert "Dev Environment")
-=======
->>>>>>> parent of 1b7f66d (Revert "Dev Environment")
 
 [node name="Dev Environment" type="Node"]
 
@@ -207,4 +191,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 3.5, 9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 5.5, 9)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4, 8)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 8.46142, 19.5573)
