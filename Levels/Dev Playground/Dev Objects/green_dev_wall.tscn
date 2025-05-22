@@ -9,9 +9,12 @@ uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_ic4sm"]
 material = SubResource("StandardMaterial3D_t6hji")
+<<<<<<< HEAD
 size = Vector3(6, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6hji"]
+=======
+>>>>>>> parent of 1b7f66d (Revert "Dev Environment")
 size = Vector3(6, 3, 1)
 
 [node name="Green Dev Wall" type="Node3D"]
