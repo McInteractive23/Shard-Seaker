@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_t6hji"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1h0s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6hji"]
 albedo_color = Color(0.148438, 1, 0, 1)
 albedo_texture = ExtResource("1_t6hji")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_ic4sm"]
-material = SubResource("StandardMaterial3D_c1h0s")
+material = SubResource("StandardMaterial3D_t6hji")
 size = Vector3(6, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6hji"]
