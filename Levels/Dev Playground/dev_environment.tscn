@@ -44,6 +44,7 @@ size = Vector3(20, 1, 20)
 =======
 =======
 >>>>>>> parent of 1b7f66d (Revert "Dev Environment")
+=======
 >>>>>>> parent of 1b7f66d (Revert "Dev Environment")
 size = Vector3(25, 1, 25)
 
@@ -58,7 +59,9 @@ size = Vector3(6, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dult1"]
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of 1b7f66d (Revert "Dev Environment")
+=======
 >>>>>>> parent of 1b7f66d (Revert "Dev Environment")
 =======
 >>>>>>> parent of 1b7f66d (Revert "Dev Environment")
