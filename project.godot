@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/inspector_tabs/plugin.cfg")
+
 [rendering]
 
 lights_and_shadows/directional_shadow/size=16384

@@ -50,6 +50,7 @@ material = SubResource("StandardMaterial3D_lt7gd")
 size = Vector3(6, 3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dult1"]
+size = Vector3(6, 3, 3)
 
 [node name="Dev Environment" type="Node"]
 
