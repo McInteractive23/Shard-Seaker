@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+#Fix Stopping In Mid Air add Glide movement with no movement deceleration in air
+
 func Movement_Logic(delta: float) -> void:
 	Movement_Input = Input.get_vector("Left","Right","Forward","Backward").rotated(-Player_Camera.global_rotation.y)
 	var Horizontal_Movement : Vector2 = Vector2(velocity.x, velocity.z)
