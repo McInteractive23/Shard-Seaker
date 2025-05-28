@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c668avcy1qx4v" path="res://Levels/Dev Playground/Dev Objects/yellow_dev_ramp.tscn" id="4_lt7gd"]
 [ext_resource type="PackedScene" uid="uid://cs6lc6yj4gxbo" path="res://Levels/Dev Playground/Dev Objects/purple_dev_pole_small.tscn" id="5_dult1"]
 [ext_resource type="PackedScene" uid="uid://d1il1pemhyf74" path="res://Levels/Dev Playground/Dev Objects/purple_dev_pole_big.tscn" id="6_s2h2c"]
-[ext_resource type="PackedScene" uid="uid://bk55hv8mne56w" path="res://Npcs/Player/Player Controler.tscn" id="7_s2h2c"]
+[ext_resource type="PackedScene" uid="uid://bk55hv8mne56w" path="res://Player/Player Controler.tscn" id="7_s2h2c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
 sky_top_color = Color(0.493, 0.52925, 0.58, 1)
@@ -194,6 +194,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 5.5, 9)
 
 [node name="PlayerControler" parent="." instance=ExtResource("7_s2h2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 8.46142, 19.5573)
