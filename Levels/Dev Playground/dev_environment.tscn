@@ -168,7 +168,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 7, -9.5)
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 6, 1, -4)
 
 [node name="Blue Dev Box 1" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.5, 1.5, -6)
 
 [node name="Blue Dev Box 2" parent="Mesh/Boxes" instance=ExtResource("3_eswq4")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 1.5, -6)
