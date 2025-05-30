@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var Base_Speed : float = 2.0
+@export var Base_Speed : float = 3.0
 @export var Sprint_Speed : float = 5.0
 @export var Movement_Acceleration : float = 4.0
 @export var Movement_Deceleration : float = 8.0
@@ -39,7 +39,7 @@ func Movement_Logic(delta: float) -> void:
 		Horizontal_Movement = Horizontal_Movement.limit_length(Max_Speed)
 		velocity.x = Horizontal_Movement.x
 		velocity.z = Horizontal_Movement.y
-	else:
+	else: if is_on_floor():
 		Horizontal_Movement = Horizontal_Movement.move_toward(Vector2.ZERO, Base_Speed * Movement_Deceleration * delta)
 		velocity.x = Horizontal_Movement.x
 		velocity.z = Horizontal_Movement.y
