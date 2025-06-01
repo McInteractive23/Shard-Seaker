@@ -1,0 +1,1 @@
+This folder holds all of the cutscene scenes and functions on how and when they will be played.

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bk55hv8mne56w"]
 
-[ext_resource type="Script" uid="uid://bqbfk5fuqn5ts" path="res://Player/player_controler.gd" id="1_2ye63"]
+[ext_resource type="Script" uid="uid://bqbfk5fuqn5ts" path="res://Player/Functions/player_controler.gd" id="1_2ye63"]
 [ext_resource type="PackedScene" uid="uid://6e37se2harm8" path="res://Player/Camera Controler.tscn" id="2_ofvjj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cmx0w"]

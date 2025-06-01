@@ -1,0 +1,2 @@
+This folder holds all of the textures and functions for the hud for the game, 
+like health, text boxes like interactons and dialog.

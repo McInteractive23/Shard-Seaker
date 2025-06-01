@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6e37se2harm8"]
 
-[ext_resource type="Script" uid="uid://usdpf34t0uw7" path="res://Player/camera_controler.gd" id="1_3qblu"]
+[ext_resource type="Script" uid="uid://usdpf34t0uw7" path="res://Player/Functions/camera_controler.gd" id="1_3qblu"]
 
 [node name="SpringArm3D" type="SpringArm3D"]
 spring_length = 5.0

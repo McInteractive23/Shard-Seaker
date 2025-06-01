@@ -1,0 +1,1 @@
+This Folder Is for all the Npc's and there functions for the game.
