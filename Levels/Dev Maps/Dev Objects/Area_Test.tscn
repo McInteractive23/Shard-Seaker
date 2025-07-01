@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp3ubxa4iic2p"]
+
+[ext_resource type="Script" uid="uid://b76lcoiill26a" path="res://Levels/Dev Maps/Dev Objects/area_test.gd" id="1_7rspm"]
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_pp7vn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rspm"]
+transparency = 1
+shading_mode = 2
+albedo_color = Color(2, 2, 2, 0.25)
+albedo_texture = ExtResource("1_pp7vn")
+emission = Color(1, 1, 1, 1)
+uv1_triplanar = true
+texture_filter = 5
+billboard_keep_scale = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_xxxwi"]
+material = SubResource("StandardMaterial3D_7rspm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjesk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1s10"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_7rspm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xxxwi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cjesk")
+disabled = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_u1s10")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
