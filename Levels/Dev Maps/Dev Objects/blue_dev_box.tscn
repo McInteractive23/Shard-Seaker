@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2lv4tb876p6b"]
 
-[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_n6pyt"]
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_n6pyt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oub5o"]
 shading_mode = 2

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://5uwv6xxcsa5v"]
+
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_gcs8w"]
+[ext_resource type="PackedScene" uid="uid://bk55hv8mne56w" path="res://Player/Player Controler.tscn" id="7_rjdx8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
+sky_top_color = Color(0.493, 0.52925, 0.58, 1)
+sky_horizon_color = Color(0.368729, 0.506433, 0.699219, 1)
+ground_bottom_color = Color(0.2385, 0.326625, 0.45, 1)
+ground_horizon_color = Color(0.368729, 0.506433, 0.699219, 1)
+ground_curve = 0.0579267
+sun_angle_max = 3.0
+sun_curve = 2.0
+use_debanding = false
+
+[sub_resource type="Sky" id="Sky_2rduw"]
+sky_material = SubResource("ProceduralSkyMaterial_j5ncr")
+
+[sub_resource type="Environment" id="Environment_jovbx"]
+background_mode = 2
+sky = SubResource("Sky_2rduw")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xk0t"]
+shading_mode = 2
+albedo_texture = ExtResource("1_gcs8w")
+uv1_triplanar = true
+texture_filter = 5
+billboard_keep_scale = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6tbo"]
+material = SubResource("StandardMaterial3D_6xk0t")
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
+size = Vector3(25, 1, 25)
+
+[node name="Dev Environment" type="Node"]
+
+[node name="Skybox" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Skybox"]
+environment = SubResource("Environment_jovbx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Skybox"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(1, 1, 0.85, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 500.0
+
+[node name="Mesh" type="Node" parent="."]
+
+[node name="MainFloor" type="Node3D" parent="Mesh"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/MainFloor"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MainFloor/StaticBody3D"]
+mesh = SubResource("BoxMesh_x6tbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MainFloor/StaticBody3D"]
+shape = SubResource("BoxShape3D_v77un")
+
+[node name="PlayerControler" parent="." instance=ExtResource("7_rjdx8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

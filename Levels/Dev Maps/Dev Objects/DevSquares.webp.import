@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6yuw0varxule"
-path.s3tc="res://.godot/imported/DevSquares.webp-f0f211c8a43d6cc9ea1553bb1907968c.s3tc.ctex"
+path.s3tc="res://.godot/imported/DevSquares.webp-561ef04323f41b3d5e0e5723a5c5dc09.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Dev Playground/DevSquares.webp"
-dest_files=["res://.godot/imported/DevSquares.webp-f0f211c8a43d6cc9ea1553bb1907968c.s3tc.ctex"]
+source_file="res://Levels/Dev Maps/Dev Objects/DevSquares.webp"
+dest_files=["res://.godot/imported/DevSquares.webp-561ef04323f41b3d5e0e5723a5c5dc09.s3tc.ctex"]
 
 [params]
 

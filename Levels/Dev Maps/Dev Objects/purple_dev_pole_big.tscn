@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1il1pemhyf74"]
 
-[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Playground/DevSquares.webp" id="1_6cf14"]
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_6cf14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi57y"]
 albedo_color = Color(1, 0, 1, 1)
