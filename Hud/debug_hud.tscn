@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx6nbjp0rojtn"]
+
+[ext_resource type="Script" uid="uid://biwnnsrumt384" path="res://Hud/debug_hud.gd" id="1_4q5du"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4q5du"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="Debug" type="CanvasLayer"]
+script = ExtResource("1_4q5du")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 60.0
+offset_bottom = 25.0
+text = "Fps:"
+label_settings = SubResource("LabelSettings_4q5du")

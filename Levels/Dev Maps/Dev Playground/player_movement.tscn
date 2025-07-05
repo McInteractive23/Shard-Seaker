@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2ecbnmtmkg4w"]
+[gd_scene load_steps=17 format=3 uid="uid://c2ecbnmtmkg4w"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_gcs8w"]
 [ext_resource type="PackedScene" uid="uid://bp3ubxa4iic2p" path="res://Levels/Dev Maps/Dev Objects/Area_Test.tscn" id="1_pvmc8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://v25m8xjsukcb" path="res://Levels/Dev Maps/Dev Objects/red_dev_box.tscn" id="2_pvmc8"]
 [ext_resource type="PackedScene" uid="uid://2lv4tb876p6b" path="res://Levels/Dev Maps/Dev Objects/blue_dev_box.tscn" id="3_aacl7"]
 [ext_resource type="PackedScene" uid="uid://c668avcy1qx4v" path="res://Levels/Dev Maps/Dev Objects/yellow_dev_ramp.tscn" id="4_od6cd"]
+[ext_resource type="PackedScene" uid="uid://dx6nbjp0rojtn" path="res://Hud/debug_hud.tscn" id="7_pvmc8"]
 [ext_resource type="PackedScene" uid="uid://bk55hv8mne56w" path="res://Player/Player Controler.tscn" id="7_rjdx8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
@@ -184,6 +185,10 @@ transform = Transform3D(1.18217e-07, 0, 1, 0, 1, 0, -1, 0, 1.18217e-07, -9.5, 5,
 
 [node name="Yellow Dev Ramp" parent="Mesh/Ramps" instance=ExtResource("4_od6cd")]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 9.5, 2, 1)
+
+[node name="Hud" type="Node" parent="."]
+
+[node name="Debug Hud" parent="Hud" instance=ExtResource("7_pvmc8")]
 
 [node name="PlayerControler" parent="." instance=ExtResource("7_rjdx8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
