@@ -1,2 +1,0 @@
-This folder will hold the functionality for all of the basic componets like 
-health, interactions, enemy ai, and more.

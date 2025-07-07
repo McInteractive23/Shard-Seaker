@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-## This is a [b]Description[/b]
+## This is a Description
 @export var Base_Speed : float = 3.0
 @export var Sprint_Speed : float = 5.0
 @export var Movement_Acceleration : float = 4.0

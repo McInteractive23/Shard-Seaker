@@ -9,8 +9,8 @@ height = 1.0
 radial_segments = 32
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ye63"]
-radius = 0.25
-height = 1.0
+radius = 0.3
+height = 1.05
 
 [node name="PlayerControler" type="CharacterBody3D"]
 script = ExtResource("1_2ye63")
@@ -19,6 +19,11 @@ script = ExtResource("1_2ye63")
 mesh = SubResource("CapsuleMesh_cmx0w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2ye63")
+
+[node name="HurtBox" type="Area3D" parent="."]
+
+[node name="HurtBoxCollision" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("CapsuleShape3D_2ye63")
 
 [node name="Camera Controler" parent="." instance=ExtResource("2_ofvjj")]
