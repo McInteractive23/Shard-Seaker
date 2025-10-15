@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfuunav3tlg5o"]
+
+[ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_hhfkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhfkg"]
+shading_mode = 2
+albedo_color = Color(0.498039, 0, 1, 1)
+albedo_texture = ExtResource("1_hhfkg")
+metallic_specular = 0.0
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_2njcs"]
+material = SubResource("StandardMaterial3D_hhfkg")
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_auoe4"]
+size = Vector3(3, 3, 3)
+
+[node name="Purple Dev Box" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_2njcs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_auoe4")
