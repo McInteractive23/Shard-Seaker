@@ -31,11 +31,28 @@ func Movement_Logic(delta: float) -> void:
 	Movement_Input = Input.get_vector("Left","Right","Forward","Backward").rotated(-Player_Camera.global_rotation.y)
 	var Horizontal_Movement : Vector2 = Vector2(velocity.x, velocity.z)
 	var Is_Sprinting: bool = Input.is_action_pressed("Sprint")
-	
+
+
+
 	if Movement_Input != Vector2.ZERO:
-		
 		var Max_Speed : float = Sprint_Speed if Is_Sprinting else Base_Speed
-		
+		var Movement : Vector2 = Horizontal_Movement/Base_Speed
+		var _Movement_x : float = Movement.x
+		var _Movement_y : float = Movement.y
+
+
+
+		const ROT_SPEED : float = 16.0  # tweak: higher = faster turn
+		var move_dir : Vector2 = Movement
+		if move_dir.length() > 0.001:
+			var target: float = wrapf(-move_dir.angle() + deg_to_rad(-90.0), 0.0, TAU)
+			$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, target, clamp(ROT_SPEED * delta, 0.0, 1.0))
+			#print("Y = ",floor(Movement.x * 100.0) / 100.0)
+			#print("X = ",floor(Movement.y * 100.0) / 100.0)
+			#lerp_angle uses the shortest direction and handles wrap-around
+
+
+
 		Horizontal_Movement += Movement_Input * Max_Speed * Movement_Acceleration * delta
 		Horizontal_Movement = Horizontal_Movement.limit_length(Max_Speed)
 		velocity.x = Horizontal_Movement.x

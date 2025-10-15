@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk55hv8mne56w"]
+[gd_scene load_steps=6 format=3 uid="uid://bk55hv8mne56w"]
 
 [ext_resource type="Script" uid="uid://bqbfk5fuqn5ts" path="res://Player/Functions/player_controler.gd" id="1_2ye63"]
 [ext_resource type="PackedScene" uid="uid://6e37se2harm8" path="res://Player/Camera Controler.tscn" id="2_ofvjj"]
@@ -8,6 +8,11 @@ radius = 0.25
 height = 1.0
 radial_segments = 32
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_ofvjj"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ye63"]
 radius = 0.3
 height = 1.05
@@ -15,8 +20,21 @@ height = 1.05
 [node name="PlayerControler" type="CharacterBody3D"]
 script = ExtResource("1_2ye63")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
 mesh = SubResource("CapsuleMesh_cmx0w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.1, 0.27, -0.2)
+mesh = SubResource("CylinderMesh_ofvjj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.1, 0.27, -0.2)
+mesh = SubResource("CylinderMesh_ofvjj")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2ye63")
