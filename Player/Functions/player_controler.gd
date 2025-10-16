@@ -8,8 +8,6 @@ extends CharacterBody3D
 @export var Movement_Acceleration : float = 4.0
 @export var Movement_Deceleration : float = 8.0
 
-
-
 @export var jump_height : float = 1.25
 @export var jump_time_to_peak : float = 0.4
 @export var jump_time_to_descent : float = 0.4
@@ -21,6 +19,23 @@ extends CharacterBody3D
 @onready var Player_Camera : Camera3D = $"Camera Controler/Camera3D"
 
 var Movement_Input : Vector2 = Vector2.ZERO
+
+const CLIMBABLE_LAYER_INDEX: int = 3
+const CLIMBABLE_LAYER_MASK: int = 1 << (CLIMBABLE_LAYER_INDEX - 1)
+
+@onready var tree_node: Node = get_node_or_null("../Mesh/ClimbeableTree")
+@onready var ray: RayCast3D = get_node("Mesh/RayCast3D") as RayCast3D
+
+func _ready() -> void:
+	if tree_node == null:
+		push_warning("ClimbeableTree not found at ../Mesh/ClimbeableTree — adjust path if needed.")
+	if ray == null:
+		push_error("RayCast3D not found at Mesh/RayCast3D — fix path in script.")
+		return
+
+	ray.enabled = true
+	ray.collision_mask = CLIMBABLE_LAYER_MASK
+	ray.force_raycast_update()
 
 func _physics_process(delta: float) -> void:
 	
@@ -40,8 +55,6 @@ func _physics_process(delta: float) -> void:
 #			# If the collider is the StaticBody3D inside the Purple Dev Box
 #			if collider.get_parent() and collider.get_parent().name == "Purple Dev Box":
 #				print("Touching the Purple Dev Box!")
-
-
 
 #Fix Stopping In Mid Air add Glide movement with no movement deceleration in air
 
@@ -79,28 +92,54 @@ func Movement_Logic(delta: float) -> void:
 		velocity.x = Horizontal_Movement.x
 		velocity.z = Horizontal_Movement.y
 
+	if ray == null:
+		return
 
-	if is_on_wall() and Dev_Print == true:
-		var tree_node: Node = get_node("../Mesh/ClimbeableTree")
+	if ray.is_colliding():
+		var collider_obj: Object = ray.get_collider()
+		if collider_obj is Node:
+			var collider_node: Node = collider_obj as Node
+			var top_child: Node = _find_top_child_under_tree(collider_node)
+			if top_child != null:
+				print("Hit climbable child:", top_child.name)
+			else:
+				print("Hit non-climbable node:", collider_node.name)
+	# else: ray is not hitting anything
 
-		for i : int in range(get_slide_collision_count()):
-			var collision: KinematicCollision3D = get_slide_collision(i)
-			var collider: Object = collision.get_collider()
-			if collider == null:
-				continue
+# Helper to find the top child under the ClimbeableTree
+func _find_top_child_under_tree(node: Node) -> Node:
+	if tree_node == null:
+		return null
+	var cur: Node = node
+	while cur != null:
+		var parent_node: Node = cur.get_parent()
+		if parent_node == tree_node:
+			return cur
+		if cur == tree_node:
+			break
+		cur = parent_node
+	return null
 
-			var parent_node: Node = collider.get_parent()
-			if parent_node == null:
-				continue
-
-			# Walk up the tree to see if we eventually reach ClimbeableTree
-			var current: Node = parent_node
-			while current:
-				if current == tree_node:
-					print("Touching ClimbeableTree child:", parent_node.name)
-					break
-				current = current.get_parent()
-
+#	if is_on_wall() and Dev_Print == true:
+#		var tree_node: Node = get_node("../Mesh/ClimbeableTree")
+#
+#		for i : int in range(get_slide_collision_count()):
+#			var collision: KinematicCollision3D = get_slide_collision(i)
+#			var collider: Object = collision.get_collider()
+#			if collider == null:
+#				continue
+#
+#			var parent_node: Node = collider.get_parent()
+#			if parent_node == null:
+#				continue
+#
+#			# Walk up the tree to see if we eventually reach ClimbeableTree
+#			var current: Node = parent_node
+#			while current:
+#				if current == tree_node:
+#					print("Touching ClimbeableTree child:", parent_node.name)
+#					break
+#				current = current.get_parent()
 
 func Jump_Logic(delta: float) -> void:
 	if is_on_floor():
