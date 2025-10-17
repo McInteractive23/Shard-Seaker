@@ -24,7 +24,7 @@ const CLIMBABLE_LAYER_INDEX: int = 3
 const CLIMBABLE_LAYER_MASK: int = 1 << (CLIMBABLE_LAYER_INDEX - 1)
 
 @onready var tree_node: Node = get_node_or_null("../Mesh/ClimbeableTree")
-@onready var ray: RayCast3D = get_node("Mesh/RayCast3D") as RayCast3D
+@onready var ray: RayCast3D = get_node("Mesh/DetectClimbable") as RayCast3D
 
 func _ready() -> void:
 	if tree_node == null:
