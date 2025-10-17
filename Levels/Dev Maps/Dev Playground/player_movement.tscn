@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2ecbnmtmkg4w"]
+[gd_scene load_steps=19 format=3 uid="uid://c2ecbnmtmkg4w"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_gcs8w"]
 [ext_resource type="PackedScene" uid="uid://bp3ubxa4iic2p" path="res://Levels/Dev Maps/Dev Objects/Area_Test.tscn" id="1_pvmc8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfuunav3tlg5o" path="res://Levels/Dev Maps/Dev Objects/purple_dev_box.tscn" id="7_aacl7"]
 [ext_resource type="PackedScene" uid="uid://dx6nbjp0rojtn" path="res://Hud/debug_hud.tscn" id="7_pvmc8"]
 [ext_resource type="PackedScene" uid="uid://bk55hv8mne56w" path="res://Player/Player Controler.tscn" id="7_rjdx8"]
+[ext_resource type="PackedScene" uid="uid://ctrbobpg3ub3k" path="res://Levels/Dev Maps/Dev Objects/purple_round_wall.tscn" id="8_od6cd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
 sky_top_color = Color(0.493, 0.52925, 0.58, 1)
@@ -30,10 +31,10 @@ tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_x6tbo"]
 material = ExtResource("2_aacl7")
-size = Vector3(25, 1, 25)
+size = Vector3(40, 1, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v77un"]
-size = Vector3(25, 1, 25)
+size = Vector3(40, 1, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt7gd"]
 albedo_color = Color(0.333333, 1, 0, 1)
@@ -68,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 10)
 [node name="Mesh" type="Node" parent="."]
 
 [node name="MainFloor" type="Node3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh/MainFloor"]
 
@@ -193,10 +195,16 @@ transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 9.5, 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, 9.5)
 
 [node name="Purple Dev Box 2" parent="Mesh/ClimbeableTree" instance=ExtResource("7_aacl7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4791, 2, 10.4901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2, -0.5)
 
 [node name="Purple Dev Box 3" parent="Mesh/ClimbeableTree" instance=ExtResource("7_aacl7")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -1.5, 2, -5.5)
+
+[node name="Purple Dev Box 4" parent="Mesh/ClimbeableTree" instance=ExtResource("7_aacl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2, 12.5)
+
+[node name="Purple Round Wall" parent="Mesh/ClimbeableTree" instance=ExtResource("8_od6cd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 7)
 
 [node name="Hud" type="Node" parent="."]
 

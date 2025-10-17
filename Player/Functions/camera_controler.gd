@@ -4,8 +4,8 @@ extends Node3D
 @export var Invert_Horizontal_Camera : bool = false
 @export var Invert_Vertical_Camera : bool = false
 
-func _process(_delta: float) -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#func _process(_delta: float) -> void:
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
 	
