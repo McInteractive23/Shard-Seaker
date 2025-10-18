@@ -213,3 +213,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 7)
 [node name="PlayerControler" parent="." instance=ExtResource("7_rjdx8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_mask = 5
+
+[connection signal="Current_Speed" from="PlayerControler" to="Hud/Debug Hud" method="_on_player_controler_current_speed"]

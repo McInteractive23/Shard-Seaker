@@ -14,3 +14,10 @@ offset_right = 60.0
 offset_bottom = 25.0
 text = "Fps:"
 label_settings = SubResource("LabelSettings_4q5du")
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 16.0
+offset_right = 60.0
+offset_bottom = 41.0
+text = "Speed:"
+label_settings = SubResource("LabelSettings_4q5du")

@@ -2,6 +2,11 @@ extends CharacterBody3D
 
 @export var Dev_Print: bool = false
 
+
+
+signal Current_Speed(Speed : float)
+var Speed: float = 0
+
 ## This is a Description
 @export var Base_Speed : float = 3.0
 @export var Sprint_Speed : float = 5.0
@@ -48,6 +53,9 @@ func Movement_Logic(delta: float) -> void:
 	Movement_Input = Input.get_vector("Left","Right","Forward","Backward").rotated(-Player_Camera.global_rotation.y)
 	var Horizontal_Movement : Vector2 = Vector2(velocity.x, velocity.z)
 	var Is_Sprinting: bool = Input.is_action_pressed("Sprint")
+
+	Speed = abs(Horizontal_Movement.x) + abs(Horizontal_Movement.y)
+	emit_signal("Current_Speed",Speed)
 
 	if Movement_Input != Vector2.ZERO:
 		var Max_Speed : float = Sprint_Speed if Is_Sprinting else Base_Speed
