@@ -60,47 +60,30 @@ func Movement_Logic(delta: float) -> void:
 	if Movement_Input != Vector2.ZERO:
 		var Max_Speed : float = Sprint_Speed if Is_Sprinting else Base_Speed
 		var Movement : Vector2 = Horizontal_Movement/Base_Speed
-		var _Movement_x : float = Movement.x
-		var _Movement_y : float = Movement.y
-
-
-
 		const ROT_SPEED : float = 16.0  # tweak: higher = faster turn
 		var move_dir : Vector2 = Movement
+
 		if ray.is_colliding():
 			var normal: Vector3 = ray.get_collision_normal()
-		# Use a distinct name to avoid shadowing Node3D.basis
 			var surf_basis: Basis = Basis.looking_at(normal, Vector3.UP)
 			var euler: Vector3 = surf_basis.get_euler() * 180.0 / PI
+			
 			$Mesh.rotation.y = lerp_angle($Mesh.rotation.y ,deg_to_rad(euler.y + 180), clamp(ROT_SPEED * delta, 0.0, 1.0))
 			
-			#$Mesh.set_rotation(Vector3(0, deg_to_rad(euler.y + 180), 0))
 		elif move_dir.length() > 0.001:
 			var target: float = wrapf(-move_dir.angle() + deg_to_rad(-90.0), 0.0, TAU)
 			$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, target, clamp(ROT_SPEED * delta, 0.0, 1.0))
 
 		Horizontal_Movement += Movement_Input * Max_Speed * Movement_Acceleration * delta
 		Horizontal_Movement = Horizontal_Movement.limit_length(Max_Speed)
+
 		velocity.x = Horizontal_Movement.x
 		velocity.z = Horizontal_Movement.y
+
 	else: if is_on_floor():
 		Horizontal_Movement = Horizontal_Movement.move_toward(Vector2.ZERO, Base_Speed * Movement_Deceleration * delta)
 		velocity.x = Horizontal_Movement.x
 		velocity.z = Horizontal_Movement.y
-
-# Helper to find the top child under the ClimbeableTree
-func _find_top_child_under_tree(node: Node) -> Node:
-	if tree_node == null:
-		return null
-	var cur: Node = node
-	while cur != null:
-		var parent_node: Node = cur.get_parent()
-		if parent_node == tree_node:
-			return cur
-		if cur == tree_node:
-			break
-		cur = parent_node
-	return null
 
 func Jump_Logic(delta: float) -> void:
 	if is_on_floor():
