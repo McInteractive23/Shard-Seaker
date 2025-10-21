@@ -4,10 +4,12 @@ extends CharacterBody3D
 
 
 
-signal Current_Speed(Speed : float)
+signal Player_Speed(Speed : float)
 var Speed: float = 0
 
 ## This is a Description
+@export var Current_Speed : float = 0.0
+var Transition_Speed : float = 16.0
 @export var Base_Speed : float = 3.0
 @export var Sprint_Speed : float = 5.0
 @export var Movement_Acceleration : float = 4.0
@@ -63,13 +65,20 @@ func Movement_Logic(delta: float) -> void:
 
 	var Horizontal_Movement : Vector2 = Vector2(velocity.x, velocity.z)
 	var Is_Sprinting: bool = Input.is_action_pressed("Sprint")
+	
+	var Target_Speed : float = Sprint_Speed if Is_Sprinting else Base_Speed
+	var t : float = clamp(Transition_Speed * delta, 0.0, 1.0)
+	Current_Speed = lerp(Current_Speed , Target_Speed, t)
+	
+	
+	
 
 	# use length() for a physically-meaningful speed value
 	Speed = Horizontal_Movement.length()
-	emit_signal("Current_Speed", Speed)
+	emit_signal("Player_Speed", Speed)
 
 	if Movement_Input != Vector2.ZERO:
-		var Max_Speed : float = Sprint_Speed if Is_Sprinting else Base_Speed
+		var Max_Speed : float = Current_Speed
 		# Movement is your current velocity scaled to base speed (used for rotation)
 		var Movement : Vector2 = Horizontal_Movement / Base_Speed
 		const ROT_SPEED : float = 16.0  # tweak: higher = faster turn

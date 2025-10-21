@@ -6,7 +6,7 @@ extends CanvasLayer
 func _ready() -> void:
 	pass # Replace with function body.
 
-	$"../../PlayerControler".Current_Speed.connect(_get_speed)
+	$"../../PlayerControler".Player_Speed.connect(_get_speed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -26,5 +26,5 @@ func _input(event: InputEvent) -> void:
 func _get_speed(Player_Speed: float) -> void:
 	$Label2.text = "Speed:" + str(snapped(Player_Speed, 0.01))
 
-func _on_player_controler_current_speed(_Speed: float) -> void:
+func _on_player_controler_current_speed(_Player_Speed: float) -> void:
 	pass # Replace with function body.
