@@ -23,8 +23,6 @@ var Speed: float = 0
 
 @onready var Player_Camera : Camera3D = $"Camera Controler/Camera3D"
 
-var Movement_Input : Vector2 = Vector2.ZERO
-
 const CLIMBABLE_LAYER_INDEX: int = 3
 const CLIMBABLE_LAYER_MASK: int = 1 << (CLIMBABLE_LAYER_INDEX - 1)
 
@@ -50,16 +48,30 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func Movement_Logic(delta: float) -> void:
-	Movement_Input = Input.get_vector("Left","Right","Forward","Backward").rotated(-Player_Camera.global_rotation.y)
+	# read input and rotate by camera yaw (assumes camera.global_rotation.y is in radians)
+	var Movement_Input : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backward").rotated(-Player_Camera.global_rotation.y)
+
+	# --- DEADZONE + NORMALIZE ---
+	const INPUT_DEADZONE : float = 0.15
+	var Input_Length : float = Movement_Input.length()
+	if Input_Length < INPUT_DEADZONE:
+		Movement_Input = Vector2.ZERO
+	elif Input_Length > 1.0:
+		# clamp diagonal vectors so magnitude never exceeds 1
+		Movement_Input = Movement_Input.normalized()
+	# ---------------------------
+
 	var Horizontal_Movement : Vector2 = Vector2(velocity.x, velocity.z)
 	var Is_Sprinting: bool = Input.is_action_pressed("Sprint")
 
-	Speed = abs(Horizontal_Movement.x) + abs(Horizontal_Movement.y)
-	emit_signal("Current_Speed",Speed)
+	# use length() for a physically-meaningful speed value
+	Speed = Horizontal_Movement.length()
+	emit_signal("Current_Speed", Speed)
 
 	if Movement_Input != Vector2.ZERO:
 		var Max_Speed : float = Sprint_Speed if Is_Sprinting else Base_Speed
-		var Movement : Vector2 = Horizontal_Movement/Base_Speed
+		# Movement is your current velocity scaled to base speed (used for rotation)
+		var Movement : Vector2 = Horizontal_Movement / Base_Speed
 		const ROT_SPEED : float = 16.0  # tweak: higher = faster turn
 		var move_dir : Vector2 = Movement
 
@@ -68,22 +80,25 @@ func Movement_Logic(delta: float) -> void:
 			var surf_basis: Basis = Basis.looking_at(normal, Vector3.UP)
 			var euler: Vector3 = surf_basis.get_euler() * 180.0 / PI
 			
-			$Mesh.rotation.y = lerp_angle($Mesh.rotation.y ,deg_to_rad(euler.y + 180), clamp(ROT_SPEED * delta, 0.0, 1.0))
+			$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, deg_to_rad(euler.y + 180), clamp(ROT_SPEED * delta, 0.0, 1.0))
 			
 		elif move_dir.length() > 0.001:
 			var target: float = wrapf(-move_dir.angle() + deg_to_rad(-90.0), 0.0, TAU)
 			$Mesh.rotation.y = lerp_angle($Mesh.rotation.y, target, clamp(ROT_SPEED * delta, 0.0, 1.0))
 
+		# apply acceleration using normalized/clamped Movement_Input
 		Horizontal_Movement += Movement_Input * Max_Speed * Movement_Acceleration * delta
 		Horizontal_Movement = Horizontal_Movement.limit_length(Max_Speed)
 
 		velocity.x = Horizontal_Movement.x
 		velocity.z = Horizontal_Movement.y
 
-	else: if is_on_floor():
-		Horizontal_Movement = Horizontal_Movement.move_toward(Vector2.ZERO, Base_Speed * Movement_Deceleration * delta)
-		velocity.x = Horizontal_Movement.x
-		velocity.z = Horizontal_Movement.y
+	else:
+		if is_on_floor():
+			Horizontal_Movement = Horizontal_Movement.move_toward(Vector2.ZERO, Base_Speed * Movement_Deceleration * delta)
+			velocity.x = Horizontal_Movement.x
+			velocity.z = Horizontal_Movement.y
+
 
 func Jump_Logic(delta: float) -> void:
 	if is_on_floor():

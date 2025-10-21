@@ -31,7 +31,7 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/mjpeg_quality=1.0
-movie_writer/movie_file="C:/Users/sdmes/Videos/Godot Capture/Test.avi"
+movie_writer/movie_file="C:/Users/MesserGaming/Videos/Godot Capture/Test.avi"
 version_control/autoload_on_startup=true
 
 [editor_plugins]

@@ -5,7 +5,7 @@ extends Node3D
 @export var Invert_Vertical_Camera : bool = false
 @onready var SpringArm: SpringArm3D = $"."
 
-var Mouse_Toggle: bool = true
+var Mouse_Toggle: bool = false
 
 const MIN_LENGTH: float = 3.0
 const MAX_LENGTH: float = 7.0
@@ -20,14 +20,17 @@ func _input(event: InputEvent) -> void:
 		
 	if event is InputEventMouseMotion:
 		rotate_from_vector(event.relative * Mouse_Sensitivity)
+		
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("Mouse Toggle"):
+	if Input.is_action_just_pressed("Mouse Toggle"):
 		Mouse_Toggle = not Mouse_Toggle
-	if Mouse_Toggle == false:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if Mouse_Toggle == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	
 	
