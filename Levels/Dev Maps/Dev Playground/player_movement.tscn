@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2ecbnmtmkg4w"]
+[gd_scene load_steps=20 format=3 uid="uid://c2ecbnmtmkg4w"]
 
 [ext_resource type="Texture2D" uid="uid://b6yuw0varxule" path="res://Levels/Dev Maps/Dev Objects/DevSquares.webp" id="1_gcs8w"]
 [ext_resource type="PackedScene" uid="uid://bp3ubxa4iic2p" path="res://Levels/Dev Maps/Dev Objects/Area_Test.tscn" id="1_pvmc8"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dx6nbjp0rojtn" path="res://Hud/debug_hud.tscn" id="7_pvmc8"]
 [ext_resource type="PackedScene" uid="uid://bk55hv8mne56w" path="res://Player/Player Controler.tscn" id="7_rjdx8"]
 [ext_resource type="PackedScene" uid="uid://ctrbobpg3ub3k" path="res://Levels/Dev Maps/Dev Objects/purple_round_wall.tscn" id="8_od6cd"]
+[ext_resource type="PackedScene" uid="uid://b74t2iidvnio0" path="res://Misc/black_hole.tscn" id="9_fs6t2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5ncr"]
 sky_top_color = Color(0.493, 0.52925, 0.58, 1)
@@ -205,6 +206,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2, 12.5)
 
 [node name="Purple Round Wall" parent="Mesh/ClimbeableTree" instance=ExtResource("8_od6cd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 7)
+
+[node name="BlackHole" parent="Mesh" instance=ExtResource("9_fs6t2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -18, 4, 7)
 
 [node name="Hud" type="Node" parent="."]
 

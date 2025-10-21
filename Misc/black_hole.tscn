@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b74t2iidvnio0"]
+
+[ext_resource type="Shader" uid="uid://8hgpx2nckfwn" path="res://Misc/black_hole.tres" id="1_w7pd4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32a23"]
+render_priority = 0
+shader = ExtResource("1_w7pd4")
+shader_parameter/scale = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_32a23"]
+material = SubResource("ShaderMaterial_32a23")
+flip_faces = true
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w7pd4"]
+
+[node name="BlackHole" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_32a23")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_w7pd4")
+disabled = true
